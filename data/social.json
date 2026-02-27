@@ -1,0 +1,14 @@
+{
+  "main": [
+    {
+      "name": "discord",
+      "icon": "fab fa-discord",
+      "link": "https://discord.com/invite/phillymeetups"
+    },
+    {
+      "name": "github",
+      "icon": "fab fa-github",
+      "link": "https://www.github.com/mautamu/veganphl"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+- name: Joy Cafe
+  description: Quaint vegan little cafe in Northern Liberties. Offers smoothies, bagels, soups, ramen, and more. Has an outdoor porch for nice-weather dining.
+  website: https://myjoycafe.com/
+  organic: partial
+  vegan: yes
+  local: yes
+  local_sources: yes
+  phone: +1 215 922 1003
+  email: info@myjoycafe.com
+  street: 630 North 2nd Street
+  city: Philadelphia
+  zip: 19123
+  hours: Mo-Sa 10:00-19:00; Su 10:00-17:00
+  long: 39.9617758
+  lat: -75.1414258

@@ -1,0 +1,113 @@
+{{ define "main" }}
+  <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+  <link
+    href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css"
+    rel="stylesheet" />
+  <!-- Banner
+  {{ with .Params.banner }}
+    <section class="section pt-14">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-7 md:col-9 mb-8 text-center">
+            <h1 class="mb-4 text-h3 lg:text-h1">
+              {{ .title | markdownify }}
+            </h1>
+            <p class="mb-8">
+              {{ .content | markdownify }}
+            </p>
+            {{ with .button }}
+              {{ if .enable }}
+                <a
+                  class="btn btn-primary"
+                  href="{{ .link | absURL }}"
+                  {{ if strings.HasPrefix .link `http` }}
+                    target="_blank" rel="noopener"
+                  {{ end }}>
+                  {{ .label }}
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
+          <div class="col-12">
+            {{/* image modules comes from https://github.com/gethugothemes/hugo-modules/tree/master/images */}}
+            {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  <!-- /Banner -->
+
+  <!-- rx -->
+    <section class="section">
+      <div class="container">
+
+  {{ range $rname, $restaurants := .Site.Data.restaurants }}
+    <script>
+    var maps = {};
+    </script>
+        {{ range $restaurants }}
+          <div class="max-w-sm w-full lg:max-w-full lg:flex mt-4 md:mt-4">
+            <div
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"></div>
+            <div
+        id="map_{{.name}}"
+              title="Map of Philly, restaurant highlighted"
+              style="min-width: 250px; height: 250px"
+      class = "rounded-b"></div>
+            <script>
+      maps[{{$rname}}] = new maplibregl.Map({
+                style: "https://tiles.openfreemap.org/styles/liberty",
+                center: [{{.lat}}, {{.long}}],
+                zoom: 12,
+                container: "map_{{.name}}",
+                interactive: true,
+              });
+              var marker = new maplibregl.Marker()
+              .setLngLat([{{.lat}}, {{.long}}])
+      .addTo(maps[{{$rname}}]);
+            </script>
+            <div
+              class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal" style="width: inherit;">
+              <div class="mb-8 max-w-lg">
+                <div class="text-gray-900 font-bold text-xl mb-2">
+                  {{ .name }}
+                </div>
+                <p class="text-gray-700 text-base">
+                  {{ .description }}
+                  <br />
+                  <address class="vcard">
+              <span class="adr">
+              <span class="street-address">{{.street}}</span>
+              <span class="locality">{{.city}}</span>,
+    <abbr class="region" title="Pennsylvania">PA</abbr>&nbsp;&nbsp;
+              <span class="postal-code">{{.zip}}</span>
+    <span class="country-name">USA</span>
+  </span>
+                  </address>
+                </p>
+              </div>
+              <div class="flex items-left">
+                <div class="text-sm">
+                  <address>
+                    <p class="text-gray-900 leading-none">
+                      <a href="tel:{{ .phone }}">{{ .phone }}</a>
+                    </p>
+                    <p class="text-gray-900 leading-none">
+                      <a href="{{ .website }}">{{ .website }}</a>
+                    </p>
+                    <p class="text-gray-600">{{ .hours }}</p>
+                  </address>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+  {{ end }}
+      </div>
+    </section>
+  <!-- rx -->
+  <!-- Call to action
+  {{ partial "call-to-action" . }}
+  <!-- /Call to action -->
+{{ end }}

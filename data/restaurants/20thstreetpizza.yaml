@@ -1,0 +1,14 @@
+- name: 20th Street Pizza
+  description: Fully vegan pizzeria offering sourdough pizza by the slice or the whole pie and myriad desserts
+  website: https://20thstreet.pizza/
+  organic: partial
+  vegan: yes
+  local: yes
+  local_sources: yes
+  phone: +1 215 398 5748
+  street: 108 S 20th Street
+  city: Philadelphia
+  zip: 19103
+  hours: Mo-Su 11:00-21:00
+  long: 39.951723
+  lat: -75.173698
