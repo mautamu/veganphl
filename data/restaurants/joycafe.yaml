@@ -13,3 +13,10 @@
   hours: Mo-Sa 10:00-19:00; Su 10:00-17:00
   long: 39.9617758
   lat: -75.1414258
+  veganitems:
+    - bagels
+    - teas
+    - coffees
+    - ramen
+    - pho
+    - sandwiches

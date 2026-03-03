@@ -12,3 +12,7 @@
   hours: Mo-Su 11:00-21:00
   long: 39.951723
   lat: -75.173698
+  veganitems:
+    - cookie
+    - pizza
+    - softserve
